@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ThemeProvider } from "styled-components";
 import {
@@ -23,7 +23,7 @@ import {
   pinkTheme,
 } from "./style";
 
-const Card = (props) => {
+const CardStyledComponents = (props) => {
   const [cardTheme, setCardTheme] = useState(waterTheme);
 
   const handleClick = () => {
@@ -110,4 +110,4 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default CardStyledComponents;
