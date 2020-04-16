@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-
+import { ThemeProvider } from "styled-components";
 import {
   CardWrapper,
   CardHeader,
@@ -17,11 +16,23 @@ import {
   CardButton,
   CardLink,
   CardBigButton,
+  grassTheme,
+  lightTheme,
 } from "./style";
-const Card = props => {
+
+const Card = (props) => {
+  const [cardTheme, setCardTheme] = useState(lightTheme);
+
+  const handleClick = () => {
+    cardTheme.name === 'grass'
+      ? setCardTheme(lightTheme)
+      : setCardTheme(grassTheme);
+  };
+
+  console.log(cardTheme.name);
   return (
     <CardWrapper>
-      <CardHeader img={'./freedomia.jpeg'}>
+      <CardHeader img={"./freedomia.jpeg"}>
         <CardHeading secondary>Freedomi@</CardHeading>
         {/* <EditedText text='pepito'/> */}
       </CardHeader>
@@ -66,8 +77,14 @@ const Card = props => {
         </CardFieldset>
 
         <CardFieldset>
-          <CardButton round type="button" secondary>Sign Up</CardButton>
-          <CardBigButton round type="button" secondary>Login</CardBigButton>
+          <ThemeProvider theme={cardTheme}>
+            <CardButton round type="button"  onClick={e=>handleClick(e)}>
+              Sign Up
+            </CardButton>
+          </ThemeProvider>
+          <CardBigButton round type="button" secondary>
+            Login
+          </CardBigButton>
         </CardFieldset>
 
         <CardFieldset>
@@ -77,6 +94,5 @@ const Card = props => {
     </CardWrapper>
   );
 };
-
 
 export default Card;

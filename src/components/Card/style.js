@@ -9,7 +9,7 @@ export const CardWrapper = styled.div`
   border-radius: 5px;
 `;
 
-// TIP: Add an image to the div with prop
+// TIP: Add an image to the div with props
 export const CardHeader = styled.header`
   padding-top: 32px;
   padding-bottom: 32px;
@@ -136,16 +136,16 @@ export const CardOptionsItem = styled.li`
   }
 `;
 
-// TIP: round propr can be a pixels or percentage
+// TIP: round propr can be  pixels or percentage
 export const CardButton = styled.button`
+  color: ${props => props.theme.color};
+  background: ${props => props.theme.background}; 
   display: block;
   width: 100%;
   padding: 12px 0;
   font-family: inherit;
   font-size: 14px;
   font-weight: 700;
-  color: #fff;
-  background-color: #e5195f;
   border: 0;
   border-radius: ${props => (props.round ? '35px' : '25%')};
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
@@ -159,7 +159,7 @@ export const CardButton = styled.button`
   ${props => props.secondary && css`background: #65ccc6;`}
 `;
 
-// TIP: Extends a component from other
+// TIP: Extends a component styles from other
 
 export const CardBigButton = styled(CardButton)`  
   margin-top: 5px;
@@ -180,6 +180,17 @@ export const CardLink = styled.a`
   }
 `;
 
-// TIP: Heritage the component Button but change to a Link tag instead
-
+// TIP:Change Styled components: Heritage the component Button styles but change to a Link tag instead using withComponent
 export const CardLinkButton = CardButton.withComponent('a');
+
+// TIP: We can define a theme for the components
+export const grassTheme = {
+  name:'grass',
+  color: "#0f1f1e",
+  background: "#65ccc6",
+};
+export const lightTheme = {
+  name:'light',
+  color: "white",
+  background:"#e5195f"
+}
