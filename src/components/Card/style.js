@@ -22,11 +22,10 @@ export const CardHeader = styled.header`
 `;
 // TIP: secondary prop will change the stlye of the Heading
 export const CardHeading = styled.span`
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
   text-align: center;
-  color: #e5195f;
-  ${props => props.secondary && css`color: #65ccc6;`}
+  color: ${props => props.theme.bg};
 `;
 //TIP : Styling an existing component ---> styled() function means that it under the hood produces a className that 
 // it injects into our component Text that we need to set to our top-level element, for it to take effect.
@@ -70,10 +69,9 @@ export const CardInput = styled.input`
   border-right: 0;
   border-bottom: 1px solid #ddd;
   border-left: 0;
-  transition: border-bottom-color 0.25s ease-in;
-
+  transition: ${props => props.theme.bg} 0.25s ease-in;
   &:focus {
-    border-bottom-color: #e5195f;
+    border-bottom-color: ${props => props.theme.bg} ;
     outline: 0;
   }
 `;
@@ -139,7 +137,7 @@ export const CardOptionsItem = styled.li`
 // TIP: round propr can be  pixels or percentage
 export const CardButton = styled.button`
   color: ${props => props.theme.color};
-  background: ${props => props.theme.background}; 
+  background: ${props => props.theme.bg}; 
   display: block;
   width: 100%;
   padding: 12px 0;
@@ -156,7 +154,7 @@ export const CardButton = styled.button`
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.16);
     transform: translate(0, -5px);
   }
-  ${props => props.secondary && css`background: #65ccc6;`}
+  ${props => props.secondary && css`background: #bebebe;`}
 `;
 
 // TIP: Extends a component styles from other
@@ -180,17 +178,63 @@ export const CardLink = styled.a`
   }
 `;
 
+export const CheckBoxWrapper = styled.div`
+  position: relative;
+`;
+export const CheckBoxLabel = styled.label`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 42px;
+  height: 26px;
+  border-radius: 15px;
+  background: ${props=>props.theme.bg};
+  cursor: pointer;
+  &::after {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    margin: 3px;
+    background: #ffffff;
+    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+  }
+`;
+export const CheckBox = styled.input`
+  opacity: 0;
+  z-index: 1;
+  border-radius: 15px;
+  width: 42px;
+  height: 26px;
+  &:checked + ${CheckBoxLabel} {
+    background: ${props=>props.theme.bg};
+    &::after {
+      content: "";
+      display: block;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      margin-left: 21px;
+      transition: 0.2s;
+    }
+  }
+`;
+
 // TIP:Change Styled components: Heritage the component Button styles but change to a Link tag instead using withComponent
 export const CardLinkButton = CardButton.withComponent('a');
 
 // TIP: We can define a theme for the components
-export const grassTheme = {
-  name:'grass',
+export const waterTheme = {
+  name:'water',
   color: "#0f1f1e",
-  background: "#65ccc6",
+  bg: "#65ccc6",
+  titleColor:"#65ccc6"
 };
-export const lightTheme = {
-  name:'light',
+export const pinkTheme = {
+  name:'pink',
   color: "white",
-  background:"#e5195f"
+  bg:"#e5195f",
+  titleColor:"#e5195f"
 }

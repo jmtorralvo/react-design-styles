@@ -16,81 +16,96 @@ import {
   CardButton,
   CardLink,
   CardBigButton,
-  grassTheme,
-  lightTheme,
+  CheckBoxWrapper,
+  CheckBox,
+  CheckBoxLabel,
+  waterTheme,
+  pinkTheme,
 } from "./style";
 
 const Card = (props) => {
-  const [cardTheme, setCardTheme] = useState(lightTheme);
+  const [cardTheme, setCardTheme] = useState(waterTheme);
 
   const handleClick = () => {
-    cardTheme.name === 'grass'
-      ? setCardTheme(lightTheme)
-      : setCardTheme(grassTheme);
+    cardTheme.name === "water"
+      ? setCardTheme(pinkTheme)
+      : setCardTheme(waterTheme);
   };
-
+  const handleCheckboxChange = () => {
+    cardTheme.name === "water"
+      ? setCardTheme(pinkTheme)
+      : setCardTheme(waterTheme);
+  };
   console.log(cardTheme.name);
   return (
     <CardWrapper>
-      <CardHeader img={"./freedomia.jpeg"}>
-        <CardHeading secondary>Freedomi@</CardHeading>
-        {/* <EditedText text='pepito'/> */}
-      </CardHeader>
-      <CardBody>
-        <CardFieldset>
-          <CardInput placeholder="Username" type="text" required />
-        </CardFieldset>
+      <ThemeProvider theme={cardTheme}>
+        <CardHeader img={"./freedomia.jpeg"}></CardHeader>
+        <CardBody>
+          <CardFieldset>
+            <CardInput placeholder="Username" type="text" required />
+          </CardFieldset>
 
-        <CardFieldset>
-          <CardInput placeholder="E-mail" type="text" required />
-        </CardFieldset>
+          <CardFieldset>
+            <CardInput placeholder="E-mail" type="text" required />
+          </CardFieldset>
 
-        <CardFieldset>
-          <CardInput placeholder="Password" type="password" required />
-          <CardIcon eye small>
-            <FontAwesomeIcon icon="eye" />
-          </CardIcon>
-        </CardFieldset>
+          <CardFieldset>
+            <CardInput placeholder="Password" type="password" required />
+            <CardIcon eye small>
+              <FontAwesomeIcon icon="eye" />
+            </CardIcon>
+          </CardFieldset>
 
-        <CardFieldset>
-          <CardOptionsNote>Or sign up with</CardOptionsNote>
+          <CardFieldset>
+            <CardOptionsNote>Or sign up with</CardOptionsNote>
 
-          <CardOptions>
-            <CardOptionsItem>
-              <CardIcon big>
-                <FontAwesomeIcon icon={["fab", "google"]} />
-              </CardIcon>
-            </CardOptionsItem>
+            <CardOptions>
+              <CardOptionsItem>
+                <CardIcon big>
+                  <FontAwesomeIcon icon={["fab", "google"]} />
+                </CardIcon>
+              </CardOptionsItem>
 
-            <CardOptionsItem>
-              <CardIcon big>
-                <FontAwesomeIcon icon={["fab", "twitter"]} />
-              </CardIcon>
-            </CardOptionsItem>
+              <CardOptionsItem>
+                <CardIcon big>
+                  <FontAwesomeIcon icon={["fab", "twitter"]} />
+                </CardIcon>
+              </CardOptionsItem>
 
-            <CardOptionsItem>
-              <CardIcon big>
-                <FontAwesomeIcon icon={["fab", "facebook"]} />
-              </CardIcon>
-            </CardOptionsItem>
-          </CardOptions>
-        </CardFieldset>
+              <CardOptionsItem>
+                <CardIcon big>
+                  <FontAwesomeIcon icon={["fab", "facebook"]} />
+                </CardIcon>
+              </CardOptionsItem>
+            </CardOptions>
+          </CardFieldset>
 
-        <CardFieldset>
-          <ThemeProvider theme={cardTheme}>
-            <CardButton round type="button"  onClick={e=>handleClick(e)}>
+          <CardFieldset>
+            <CardButton round type="button" onClick={(e) => handleClick(e)}>
               Sign Up
             </CardButton>
-          </ThemeProvider>
-          <CardBigButton round type="button" secondary>
-            Login
-          </CardBigButton>
-        </CardFieldset>
-
-        <CardFieldset>
-          <CardLink>I already have an account</CardLink>
-        </CardFieldset>
-      </CardBody>
+            <CardBigButton round type="button" secondary>
+              Login
+            </CardBigButton>
+          </CardFieldset>
+          <CardFieldset>
+            <CardLink>I already have an account</CardLink>
+          </CardFieldset>
+          <CardHeading theme={cardTheme}>Freedomi</CardHeading>
+          {/* <EditedText text='pepito'/> */}
+          <CardFieldset>
+            <CheckBoxWrapper>
+              <CheckBox
+                id="checkbox"
+                type="checkbox"
+                onChange={handleCheckboxChange}
+              />
+              <CheckBoxLabel htmlFor="checkbox" />
+            </CheckBoxWrapper>
+          </CardFieldset>
+        </CardBody>
+      </ThemeProvider>
     </CardWrapper>
   );
 };
