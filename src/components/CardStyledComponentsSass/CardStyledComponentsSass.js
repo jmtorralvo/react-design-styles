@@ -1,25 +1,33 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import './style.scss';
+import './styles/style.scss';
 
 const CardStyledComponentsSass = (props) => {
- // const [cardTheme, setCardTheme] = useState(waterTheme);
+ const [cardTheme, setCardTheme] = useState('light');
+ document.documentElement.className = '';
+ document.documentElement.classList.add(`theme-${cardTheme}`);
 
-  // const handleClick = () => {
-  //   cardTheme.name === "water"
-  //     ? setCardTheme(pinkTheme)
-  //     : setCardTheme(waterTheme);
-  // };
+  const handleClick = () => {
+    cardTheme === 'light'
+      ? setCardTheme('dark')
+      : setCardTheme('light');
+
+    console.log(cardTheme)
+    document.documentElement.className = '';
+    document.documentElement.classList.add(`theme-${cardTheme}`);
+  };
   // const handleCheckboxChange = () => {
-  //   cardTheme.name === "water"
-  //     ? setCardTheme(pinkTheme)
-  //     : setCardTheme(waterTheme);
+  //   cardTheme.name === 'dark'
+  //     ? setCardTheme('light')
+  //     : setCardTheme('dark');
   // };
+
+    console.log(cardTheme);
 
   return (
     <div className="cardWrapper">
       <header></header>
-      <div class='cardBody'>
+      <div className='cardBody'>
         <fieldset>
           <input placeholder="Username" type="text" required></input>
         </fieldset>
@@ -28,30 +36,40 @@ const CardStyledComponentsSass = (props) => {
         </fieldset>
         <fieldset>
           <input placeholder="Password" type="text" required></input>
-          <span class="icon input-icon small">
+          <span className="icon input-icon small">
             <FontAwesomeIcon icon="eye" />
           </span>
         </fieldset>
         <fieldset>
           <small>Or sign up with</small>
         </fieldset>
-        <ul class="rrss-list">
-          <li>
-            <span class="icon big">
-              <FontAwesomeIcon icon={["fab", "google"]} />
-            </span>
-          </li>
-          <li>
-            <span class="icon big">
-              <FontAwesomeIcon icon={["fab", "twitter"]} />
-            </span>
-          </li>
-          <li>
-            <span class="icon big">
-              <FontAwesomeIcon icon={["fab", "facebook"]} />
-            </span>
-          </li>
-        </ul>
+        <fieldset>
+          <ul className="rrss-list">
+            <li>
+              <span className="icon big">
+                <FontAwesomeIcon icon={["fab", "google"]} />
+              </span>
+            </li>
+            <li>
+              <span className="icon big">
+                <FontAwesomeIcon icon={["fab", "twitter"]} />
+              </span>
+            </li>
+            <li>
+              <span className="icon big">
+                <FontAwesomeIcon icon={["fab", "facebook"]} />
+              </span>
+            </li>
+          </ul>
+        </fieldset>
+        <fieldset>
+          <button type="button round" onClick={() => handleClick()}>
+            Sign Up
+          </button>
+          <button type="button round" onClick={() => handleClick()}>
+            Sign Up
+          </button>
+        </fieldset>
       </div>
     </div>
   );
