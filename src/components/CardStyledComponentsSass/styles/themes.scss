@@ -1,16 +1,24 @@
 $themes: (
     light: (
+        primary-color: #65ccc6,
+        basic-dark-color: #333,
+        basic-grey-color: #666,
         background-color: #fff,
         font-color: #222,
-        icon-color: #222,
         input-background: #fff,
         input-font-color: #222,
+        btn-text-color: #fff,
+        link-color:  #333,
     ),
     dark: (
+        primary-color: #e5195f,
+        basic-dark-color: #ccc,
+        basic-grey-color: #ddd,
         background-color: #222,
         font-color:  #fafafa,
-        icon-color: #fafafa,
         input-background: #ccc,
         input-font-color: #222,
+        btn-text-color: #222,
+        link-color: #fafafa,
     )
 );

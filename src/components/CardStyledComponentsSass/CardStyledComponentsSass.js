@@ -62,14 +62,30 @@ const CardStyledComponentsSass = (props) => {
             </li>
           </ul>
         </fieldset>
-        <fieldset>
-          <button type="button round" onClick={() => handleClick()}>
+        <fieldset className="sign-in-wrapper">
+          <button className="button round" onClick={() => handleClick()}>
             Sign Up
           </button>
-          <button type="button round" onClick={() => handleClick()}>
+          <button className="button round secondary" onClick={() => handleClick()}>
             Sign Up
           </button>
         </fieldset>
+        <fieldset className="bottom-link-wrapper">
+          <a className='generic-link'>I already have an account</a>
+          <span className="sub-link">Freedomi</span>
+        </fieldset>
+        <fieldset>
+          <div className="checkbox-wrapper">
+            <input 
+              id="checkbox2"
+              type="checkbox"
+              onChange={() => handleClick()}/>
+            <label className="checkbox-label" htmlFor="checkbox2"></label>
+          </div>
+        </fieldset>
+        {/* <div className="footer-pop-up">
+          <span className="bounce">{cardTheme} theme</span>  
+        </div> */}
       </div>
     </div>
   );
